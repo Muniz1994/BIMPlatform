@@ -1,14 +1,23 @@
 import { Color } from "three";
 import { IfcViewerAPI } from "web-ifc-viewer";
+import Stats from 'stats.js/src/Stats';
 
 console.log("ok");
 
 const container = document.getElementById("viewer-container");
 
-const viewer = new IfcViewerAPI({
+let viewer = new IfcViewerAPI({
   container
 });
 
+//memory visualization
+const stats = new Stats();
+addStats();
+function addStats() {
+    stats.showPanel(2);
+    document.body.append(stats.dom);
+    viewer.context.stats = stats;
+};
 
 
 const input = document.getElementById("ifc-input");
@@ -42,6 +51,8 @@ async function loadIfc(url) {
   // await viewer.IFC.setWasmPath("./wasm/");
   const model = await viewer.IFC.loadIfcUrl(url, true);
   viewer.shadowDropper.renderShadow(model.modelID);
+  clean_button.classList.toggle("has-model");
+
 }
 
 
@@ -93,6 +104,29 @@ grid_button.addEventListener("click", async function() {
 //   loadButton.blur();
 //   inputElement.click();
 // });
+
+async function releaseMemory() {
+  viewer.dispose();
+  viewer = null;
+  viewer = new IfcViewerAPI({
+    container
+  });
+  addStats();
+}
+
+const clean_button = document.getElementById("clean-viewer");
+
+clean_button.addEventListener("click", async function() {
+
+  if (this.classList.contains("has-model")){
+    releaseMemory()
+    this.classList.toggle("has-model")
+  }
+  else {
+    alert("viewer already clean!")
+  }
+}
+)
 
 
 
