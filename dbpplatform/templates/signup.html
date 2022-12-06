@@ -1,0 +1,22 @@
+<!doctype html>
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-lg-4 border-end pb-5 pb-md-2">
+            <div class="row">
+                <form method="POST" class="post-form" enctype="multipart/form-data" id="ifc-input-form">  
+                    {% csrf_token %}  
+                    {{ form.as_p }}  
+                    <button type="submit" class="save btn btn-default">Save</button>  
+                </form> 
+            </div>
+        </div>
+        <div class="col" id="viewer-container">
+            <canvas class="border border-dark rounded border-5 m-2" id="three-canvas"></canvas>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+

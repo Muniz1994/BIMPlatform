@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+    {% include 'include\head.html' %}
+
+    <body class="d-flex flex-column min-vh-100">
+
+        {% include 'include\navbar.html' %}
+
+        {% block content %}
+        <!-- Content Goes here -->
+        {% endblock content %}
+
+        {% include 'include\footer.html' %}
+
+    </body>
+    
+</html>

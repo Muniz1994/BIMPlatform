@@ -1,0 +1,44 @@
+<!doctype html>
+{% extends "base.html" %} 
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div id="checking-panel" class="col-12 col-lg-4 border-end pb-5 pb-md-2">
+            <div class="row">
+                <p class="h4 py-3   ">
+                    Permits Checking
+                </p>
+            </div>
+            <div class="row p-3">
+                <p class="h5">
+                    Rule checker
+                </p> 
+                {% for i in results %}
+                <button
+                class="btn btn-danger m-2"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#{{i.guid}}"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+                >
+                {{ i.name }}
+                </button>
+
+                <!-- Collapsed content -->
+                <div class="collapse mt-3" id="{{i.guid}}">
+                    {{ i.guid }}
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col border border-dark rounded border-5 m-2" id="viewer-container">
+        </div>
+    </div>
+</div>
+<script>var ifc_file = '{{ ifc_file }}'</script>
+<script src="{% static 'viewer/viewer.js'%}"></script>
+{% endblock content %}
+
