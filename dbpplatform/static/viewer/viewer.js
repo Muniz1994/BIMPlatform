@@ -122044,10 +122044,22 @@ window.onkeydown = (event) => {
 
 async function loadIfc(url) {
   // await viewer.IFC.setWasmPath("./wasm/");
-  const model = await viewer.IFC.loadIfcUrl(url, true);
-  viewer.shadowDropper.renderShadow(model.modelID);
-  clean_button.classList.toggle("has-model");
 
+  const loader_spinner = document.getElementById("load-spinner");
+  const container = document.getElementById("viewer-container");
+
+  container.style.display = "none";
+  loader_spinner.classList.toggle("visually-hidden");
+
+  const model = await viewer.IFC.loadIfcUrl(url, true);
+  
+  loader_spinner.classList.toggle("visually-hidden");
+  container.style.display = "block";
+  
+  console.log('ok!');
+  await viewer.shadowDropper.renderShadow(model.modelID);
+  clean_button.classList.toggle("has-model");
+  loader_spinner.style.display = "none";
 }
 
 

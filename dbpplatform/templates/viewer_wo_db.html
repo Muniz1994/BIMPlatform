@@ -15,13 +15,17 @@
             </div>
             <div class="row">
                 <div class="col rounded p-0">
-                    <div class="col  mb-3" id="viewer-container">
+                    <div class="col  mb-3" id="viewer-container" >    
+                    </div>
+                    <div class="col d-flex align-items-center justify-content-center visually-hidden mb-3" id="load-spinner">
+                        <img src="{% static 'img/DICE.svg'%}" class="logo-loader scale-up-center text-black" alt="">
+                        <!-- <div class="spinner-border" role="status"></div> -->
                     </div>
                 </div>
             </div>
         </div>
-        
     </div>
+        
 </div>
 <script>const logo = "{% static 'viewer/assets/DICE.svg' %}"</script>
 <script src="{% static 'viewer/viewer.js'%}"></script>
