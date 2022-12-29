@@ -2,6 +2,7 @@
 {% extends "base.html" %} 
 {% load static %}
 {% block content %}
+
 <div class="container p-0">
     <div class="row">
         <div class="col p-0">
@@ -15,7 +16,7 @@
             </div>
             <div class="row">
                 <div class="col rounded p-0">
-                    <div class="col  mb-3" id="viewer-container" >    
+                    <div class="col  mb-3 shadow-4" id="viewer-container" >    
                     </div>
                     <div class="col d-flex align-items-center justify-content-center visually-hidden mb-3" id="load-spinner">
                         <img src="{% static 'img/DICE.svg'%}" class="logo-loader scale-up-center text-black" alt="">

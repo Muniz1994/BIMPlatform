@@ -31,7 +31,7 @@ window.addEventListener("dblclick", async function(event){
   const props = await viewer.IFC.getProperties(modelID, id, true, false);
 
   console.log(props);
-  alert(props);
+  viewer.IFC.getAllItemsOfType(modelID, 2, true);
 });
 
 
